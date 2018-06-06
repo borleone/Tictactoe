@@ -1,5 +1,7 @@
 package borleone.com.tictactoe;
 
+import android.animation.AnimatorInflater;
+import android.animation.ObjectAnimator;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mNewGame, mUndo;
     private TextView mGameStatus;
     private boolean isGameActive;
+    final ObjectAnimator[] animator = new ObjectAnimator[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tictactoe = new Board();
         isGameActive = true;
         tictactoe.newGame();
+
+        animator[0] = (ObjectAnimator) AnimatorInflater.loadAnimator(this, R.animator.blink);
+        animator[1] = (ObjectAnimator) AnimatorInflater.loadAnimator(this, R.animator.blink);
+        animator[2] = (ObjectAnimator) AnimatorInflater.loadAnimator(this, R.animator.blink);
+
     }
 
     @Override
@@ -151,14 +159,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     case 1:
                         gameResult = getString(R.string.x_win);
                         list_places = tictactoe.getWin_places();
-                        for (Pair coordinate : list_places)
-                            mGrid[(int) coordinate.first][(int) coordinate.second].setTextColor(getColor(R.color.dark_grey_blue));
+                        blinkPlaces(list_places);
                         break;
                     case 2:
                         gameResult = getString(R.string.o_win);
                         list_places = tictactoe.getWin_places();
-                        for (Pair coordinate : list_places)
-                            mGrid[(int) coordinate.first][(int) coordinate.second].setTextColor(getColor(R.color.dark_grey_blue));
+                        blinkPlaces(list_places);
                         break;
                 }
                 mGameStatus.setText(gameResult);
@@ -171,6 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 isGameActive = true;
                 mGameStatus.setText(R.string.x_turn);
                 for (int i = 0; i < 3; ++i) {
+                    animator[i].end();
                     for (int j = 0; j < 3; ++j) {
                         mGrid[i][j].setText("");
                         mGrid[i][j].setTextColor(getColor(R.color.white));
@@ -186,12 +193,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mGameStatus.setText(tictactoe.getTurn() == 1 ? getString(R.string.x_turn) : getString(R.string.o_turn));
                     if (!isGameActive) {
                         ArrayList<Pair> list_places = tictactoe.getWin_places();
+                        for (int i = 0; i < 3; ++i)
+                            animator[i].end();
                         for (Pair coordinate : list_places)
                             mGrid[(int) coordinate.first][(int) coordinate.second].setTextColor(getColor(R.color.white));
                         isGameActive = true;
                     }
                 } else Toast.makeText(this, "Game not started", Toast.LENGTH_SHORT).show();
                 break;
+        }
+    }
+
+    // Blink the winning combination of X's or O's
+    private void blinkPlaces(ArrayList<Pair> list_places) {
+        int i = 0;
+        for (Pair coordinate : list_places) {
+            animator[i].setTarget(mGrid[(int) coordinate.first][(int) coordinate.second]);
+            animator[i++].start();
         }
     }
 }

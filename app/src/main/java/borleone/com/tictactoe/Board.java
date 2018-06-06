@@ -23,6 +23,9 @@ class Board {
         for (int[] row : grid)
             Arrays.fill(row, 0);
 
+        // Initialize Player 1's turn
+        turn = 1;
+
         // Clear stack of playing order
         playOrder.clear();
         if (!win_places.isEmpty()) win_places.clear();
