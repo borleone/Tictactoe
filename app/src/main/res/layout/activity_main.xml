@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="50dp"
+        android:text="@string/x_turn"
+        android:textAppearance="@style/H1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <GridLayout
+        android:id="@+id/gridlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/grid_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:theme="@style/GridButton" />
+
+        <Button
+            android:id="@+id/grid_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:theme="@style/GridButton" />
+
+        <Button
+            android:id="@+id/grid_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:theme="@style/GridButton" />
+
+        <Button
+            android:id="@+id/grid_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:theme="@style/GridButton" />
+
+        <Button
+            android:id="@+id/grid_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:theme="@style/GridButton" />
+
+        <Button
+            android:id="@+id/grid_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:theme="@style/GridButton" />
+
+        <Button
+            android:id="@+id/grid_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:theme="@style/GridButton" />
+
+        <Button
+            android:id="@+id/grid_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:theme="@style/GridButton" />
+
+        <Button
+            android:id="@+id/grid_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:theme="@style/GridButton" />
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/button_new_game"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/new_game"
+        android:theme="@style/MyButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/button_undo"
+        app:layout_constraintTop_toBottomOf="@id/gridlayout"
+        app:layout_constraintWidth_percent="0.35" />
+
+    <Button
+        android:id="@+id/button_undo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/undo"
+        android:theme="@style/MyButton"
+        app:layout_constraintLeft_toRightOf="@id/button_new_game"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gridlayout"
+        app:layout_constraintWidth_percent="0.35" />
+
+</android.support.constraint.ConstraintLayout>
