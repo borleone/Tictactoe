@@ -176,8 +176,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tictactoe.newGame();
                 isGameActive = true;
                 mGameStatus.setText(R.string.x_turn);
-                for (int i = 0; i < 3; ++i) {
+                for (int i = 0; i < 3; ++i)
                     animator[i].end();
+                for (int i = 0; i < 3; ++i) {
                     for (int j = 0; j < 3; ++j) {
                         mGrid[i][j].setText("");
                         mGrid[i][j].setTextColor(getColor(R.color.white));
